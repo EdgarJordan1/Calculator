@@ -1,0 +1,21 @@
+private void Form1_Paint(object sender, PaintEventArgs e)
+    {
+        
+        device.Clear(ClearFlags.Target | ClearFlags.ZBuffer, Color.CornflowerBlue, 1, 0);
+
+        SetupCamera();
+
+        device.BeginScene();
+
+        device.VertexFormat = CustomVertex.PositionColored.Format;
+        device.SetStreamSource(0, vb, 0);
+        device.Indices = ib;
+
+        DrawBox(angle / (float)Math.PI, angle / (float)Math.PI, angle / (float)Math.PI, 0, 0, 0);
+        DrawBox(angle / (float)Math.PI * 2, angle / (float)Math.PI, angle / (float)Math.PI, 0, 0, 0);
+        angle += 0.02f;
+
+        device.EndScene();
+
+        this.Invalidate();
+    }
